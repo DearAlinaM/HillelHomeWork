@@ -15,67 +15,77 @@
      p.check(obj); // --> no p.input() -> 3 prompt -> считает
 */
 
+
+
 function SuperMath() {
-}
-
-SuperMath.prototype.input = function () {
-    this.x = +(prompt('X', ''));
-    this.y = +(prompt('Y', ''));
-    this.znak = prompt('Znak', '');
-    return this.check(this); 
-}
-
-SuperMath.prototype.add = function () {
-    console.log(this.x + this.y);
-}
-
-SuperMath.prototype.min = function () {
-     console.log(this.x - this.y);
-}
-
-SuperMath.prototype.div = function () {
-    this.y === 0? console.log('na 0 delit nelzya'):console.log(this.x / this.y);
-}
-
-SuperMath.prototype.mul = function () {
-     console.log(this.x * this.y);
-}
-
-SuperMath.prototype.ost = function () {
-     console.log(this.x % this.y);
-}
-
-SuperMath.prototype.check = function (obj) {
-    this.x = obj.x;
-    this.y = obj.y;
-    this.znak = obj.znak;
     
-    if (confirm('Vypolnit *' + this.znak + '* ?')) {
-        if (this.znak === '+') {
-            this.add();
-        }
-        else if (this.znak === '-') {
-            this.min();
-        }
-        else if (this.znak === '/') {
-            this.div();
+        if (this.znak === '+' ) {
+            console.log(SuperMath.prototype.add.call(null, this.X, this.Y));
         }
         else if (this.znak === '*') {
-            this.mul();
+            console.log(SuperMath.prototype.mult.call(null, this.X, this.Y));
+        }
+        else if (this.znak === '-') {
+            console.log(SuperMath.prototype.min.call(null, this.X, this.Y));
+        }
+        else if (this.znak === '/') {
+            console.log(SuperMath.prototype.div.call(null, this.X, this.Y));
         }
         else if (this.znak === '%') {
-            this.ost();
+            console.log(SuperMath.prototype.ost.call(null, this.X, this.Y));
         }
-        else {
-            console.log('NET TAKOGO ZNAKA')
-        }
-    }
+  
+    else if (this.znak === undefined) { }
     else {
-           this.input()
+        console.log( 'ne vernyi znak');
+    }
+}
+
+SuperMath.prototype.add = function (a, b) {
+    return a + b;
+}
+
+SuperMath.prototype.mult = function (a, b) {
+    return a * b;
+}
+
+SuperMath.prototype.min = function (a, b) {
+    return a - b;
+}
+
+SuperMath.prototype.div = function (a, b) {
+    return a / b;
+}
+
+SuperMath.prototype.ost = function (a, b) {
+    return a % b;
+}
+
+
+SuperMath.prototype.getInput = function () {
+    this.X = +(prompt('xNew', ''));
+    this.Y = +(prompt('yNew', ''));
+    this.znak = prompt('znakNew', '');
+    SuperMath.call(this);
+}
+
+
+function check(objToCheck) {
+    for (var key in objToCheck) {
+        if (key === 'znak') {
+            if (confirm('произвести математическое действие ' + objToCheck[key] + ' ?')) {
+                SuperMath.call(objToCheck);
+              }
+            else {
+                this.getInput();
+            }
+        }
     }
 }
 
 
-var obj = { x: 3, y: 2, znak: '+' };
 var test = new SuperMath();
-test.check(obj);
+// console.log(test);
+var obj = { X: 12, Y: 3, znak: '-'};
+test.check = check;
+var newRes = test.check(obj);

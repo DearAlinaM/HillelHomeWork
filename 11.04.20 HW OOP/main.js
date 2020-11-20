@@ -16,6 +16,26 @@
 */
 
 function SuperMath() {
+    // console.log(this.znak);
+
+     if (this.znak === '+') {
+            this.add();
+        }
+        else if (this.znak === '-') {
+            this.min();
+        }
+        else if (this.znak === '/') {
+            this.div();
+        }
+        else if (this.znak === '*') {
+            this.mul();
+        }
+        else if (this.znak === '%') {
+            this.ost();
+        }
+        else {
+            console.log('NET TAKOGO ZNAKA')
+        }
 }
 
 SuperMath.prototype.input = function () {
@@ -51,31 +71,14 @@ SuperMath.prototype.check = function (obj) {
     this.znak = obj.znak;
     
     if (confirm('Vypolnit *' + this.znak + '* ?')) {
-        if (this.znak === '+') {
-            this.add();
+        SuperMath.call(this); 
         }
-        else if (this.znak === '-') {
-            this.min();
-        }
-        else if (this.znak === '/') {
-            this.div();
-        }
-        else if (this.znak === '*') {
-            this.mul();
-        }
-        else if (this.znak === '%') {
-            this.ost();
-        }
-        else {
-            console.log('NET TAKOGO ZNAKA')
-        }
-    }
     else {
            this.input()
     }
 }
 
 
-var obj = { x: 3, y: 2, znak: '+' };
+var objTest = { x: 3, y: 2, znak: '+' };
 var test = new SuperMath();
-test.check(obj);
+test.check(objTest);
