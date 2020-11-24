@@ -3,7 +3,7 @@
 
 // _.chunk(array, [size=1])
 
-let myArray_1 = [0, 'a', 1, 'b', 2, 'c', 3, 'd'];
+/*let myArray_1 = [0, 'a', 1, 'b', 2, 'c', 3, 'd'];
 let checkMyArray_1 = _.chunk(myArray_1, 3);
 console.log(checkMyArray_1);
 
@@ -32,5 +32,8 @@ let myCollection_1 = [
 
 let filtered = _.filter(myCollection_1, function (o) { return o.age > 25 });
 console.log(filtered);
+*/
 
-
+const check = _.invokeMap([123, 456], 'sort');
+console.log(check)
+// => [['1', '2', '3'], ['4', '5', '6']]
