@@ -16,5 +16,5 @@ for (const inputs of inpSel) {
 setInterval(
     () => { 
     d.value = str;
-}, 2000
+  }, 2000
 )
