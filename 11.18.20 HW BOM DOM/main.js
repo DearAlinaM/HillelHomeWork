@@ -7,14 +7,12 @@ const d = document.querySelector('#textArea');
 const inpSel = document.querySelectorAll('input');
 
 
-var str = '';
-for (const inputs of inpSel) {
-  str += inputs.value + ', ';
-}
-
-
 setInterval(
     () => { 
+    var str = '';
+    for (const inputs of inpSel) {
+        str += inputs.value + ', ';
+      };
     d.value = str;
   }, 2000
 )
