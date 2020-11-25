@@ -3,13 +3,18 @@
 */
 
 
-const a = document.querySelector('#input1');
-const b = document.querySelector('#input2');
-const c = document.querySelector('#input3');
 const d = document.querySelector('#textArea');
+const inpSel = document.querySelectorAll('input');
+
+
+var str = '';
+for (const inputs of inpSel) {
+  str += inputs.value + ', ';
+}
+
 
 setInterval(
     () => { 
-    d.value= `${a.value}, ${b.value}, ${c.value}`;
-    }, 2000
+    d.value = str;
+}, 2000
 )

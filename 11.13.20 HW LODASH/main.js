@@ -35,5 +35,13 @@ console.log(filtered);
 */
 
 const check = _.invokeMap([123, 456], 'sort');
-console.log(check)
+console.log(check);
 // => [['1', '2', '3'], ['4', '5', '6']]
+
+// _.some(collection, [predicate=_.identity])
+var users = [
+  { 'user': 'false', 'active': true },
+  { 'user': 'false',   'active': false }
+];
+const someTest = _.some(users, ['user', 'false'])
+console.log(someTest);
