@@ -1,5 +1,5 @@
 
-// --- Array methods
+// 1--- Array methods
 
 // _.chunk(array, [size=1])
 
@@ -20,7 +20,7 @@ let myArray_3 = [0, 'a', 1, 'b', 2, 'c', 3, 'd'];
 let checkMyArray_3 = _.pull(myArray_3,'a', 'd', 0);
 console.log(checkMyArray_3);
 
-// --- “Collection” Methods
+// 2--- “Collection” Methods
 
 // _.filter(collection, [predicate=_.identity])
 
@@ -32,7 +32,7 @@ let myCollection_1 = [
 
 let filtered = _.filter(myCollection_1, function (o) { return o.age > 25 });
 console.log(filtered);
-*/
+
 
 const check = _.invokeMap([123, 456], 'sort');
 console.log(check);
@@ -44,4 +44,21 @@ var users = [
   { 'user': 'false',   'active': false }
 ];
 const someTest = _.some(users, ['user', 'false'])
-console.log(someTest);
+console.log(someTest);*/
+
+
+
+// 4---- Function
+
+// _.spread(func, [start=0])
+
+let any = _.spread(function (arg1, arg2, arg3) { console.log('spread func arg.', arg1, arg2, arg3) })
+any (['one', 'two', 'one more'])
+
+
+// 3--- “Date” Methods
+/*
+///?????
+_.defer(function(stamp) {
+  console.log(_.now() - stamp);
+}, _.now());*/

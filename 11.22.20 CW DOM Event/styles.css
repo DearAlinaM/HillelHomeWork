@@ -1,0 +1,25 @@
+body {
+  background-color: aqua;
+}
+
+.box1 {
+  /* background-color: rgb(255, 214, 127); */
+  border: 10px solid rgb(128, 41, 0);
+  height: 500px;
+  width: 500px;
+  position: fixed;
+}
+/* 
+.box2 {
+  background-color: rgb(31, 231, 138);
+  border: 20px solid rgb(18, 58, 145);
+  height: 300px;
+  width: 300px;
+} */
+
+.boxY {
+  background-color: rgb(31, 231, 138);
+  border: 20px solid rgb(18, 58, 145);
+  height: 300px;
+  width: 300px;
+}

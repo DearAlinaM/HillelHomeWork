@@ -1,0 +1,21 @@
+body {
+  background-color: rgb(115, 129, 115);
+}
+.box {
+  border: black 5px solid;
+  width: 50px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.comission {
+  height: 10px;
+  width: 100%;
+  background-color: red;
+}
+.calc {
+  height: 50px;
+  width: 100%;
+  background-color: green;
+}
