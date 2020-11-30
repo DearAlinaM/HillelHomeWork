@@ -1,5 +1,5 @@
 
-// 1--- Array methods
+// --- Array methods
 
 // _.chunk(array, [size=1])
 
@@ -20,7 +20,7 @@ let myArray_3 = [0, 'a', 1, 'b', 2, 'c', 3, 'd'];
 let checkMyArray_3 = _.pull(myArray_3,'a', 'd', 0);
 console.log(checkMyArray_3);
 
-// 2--- “Collection” Methods
+// --- “Collection” Methods
 
 // _.filter(collection, [predicate=_.identity])
 
@@ -48,15 +48,84 @@ console.log(someTest);*/
 
 
 
-// 4---- Function
+// ---- Function
+/*
+_.spread(func, [start=0])
 
-// _.spread(func, [start=0])
-
-let any = _.spread(function (arg1, arg2, arg3) { console.log('spread func arg.', arg1, arg2, arg3) })
+let any = _.spread(function (arg1, arg2, arg3) { console.log('spread func arg.', arg1, arg2, arg3) });
 any (['one', 'two', 'one more'])
 
+_.memoize(func, [resolver])
 
-// 3--- “Date” Methods
+let obj1 = { user: "Ivan", age: 20 };
+let obj2 = { user: "Petya", age: 40 };
+
+let keys = _.memoize(_.keys);
+console.log(keys(obj1));
+
+let values = _.memoize(_.values);
+console.log(values(obj2));
+*/
+
+// ---- Lang
+/*
+// _.clone(value)
+
+let pesron = { firstName: "Ivan", surname: 'Petrov', age: 34 };
+let person2 = _.clone(pesron);
+console.log(person2);
+
+// _.isEqual(value, other)
+
+let objA = { a: 1, b: 2 };
+let objB = { a: 2, b: 2 };
+let arr = [1, 2, 'v', 's'];
+let arr2 = [1, 2, 'v', 's'];
+
+console.log(_.isEqual(objA, objB));
+console.log(_.isEqual(arr, objB));
+console.log(_.isEqual(arr, arr2));
+*/
+
+// ----- Math
+/*
+//_.min(array)
+
+console.log(_.min([8, 5, 3, true]));
+
+// _.round(number, [precision=0])
+
+console.log(_.round(8002.02, -3));
+
+//_.sumBy(array, [iteratee=_.identity])
+
+let arr = [{ a: 1 }, { a: 5 }, { a: 4 }];
+console.log(_.sumBy(arr, function(arg){return arg.a}))
+*/
+
+// ---- Object 
+/*
+// _.defaults(object, [sources])
+
+console.log(_.defaults({ 'a': 1 }, { 'h': 5 }, { 'd': 4 }))
+
+// _.get(object, path, [defaultValue])
+
+var type = ['a', {'b': 2 }, ['c', 'd', {'m': 5}], ['e']];
+console.log(_.get(type, [2], 3));
+
+//_.merge(object, [sources])
+
+let obj1 = {'a': 1, 'b': 2, 'c': 3};
+let obj2 = {'d': 4, 'e': 5, 'f': 6};
+console.log(_.merge(obj1, obj2));
+*/
+
+// --- 
+
+
+// --- Seq
+// --- “Date” Methods
 /*
 ///?????
 _.defer(function(stamp) {
