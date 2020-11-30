@@ -1,12 +1,11 @@
-
 // --- Array methods
+
 
 // _.chunk(array, [size=1])
 
 /*let myArray_1 = [0, 'a', 1, 'b', 2, 'c', 3, 'd'];
 let checkMyArray_1 = _.chunk(myArray_1, 3);
 console.log(checkMyArray_1);
-
 
 // _.compact(array)
 
@@ -20,7 +19,9 @@ let myArray_3 = [0, 'a', 1, 'b', 2, 'c', 3, 'd'];
 let checkMyArray_3 = _.pull(myArray_3,'a', 'd', 0);
 console.log(checkMyArray_3);
 
+
 // --- “Collection” Methods
+
 
 // _.filter(collection, [predicate=_.identity])
 
@@ -32,7 +33,6 @@ let myCollection_1 = [
 
 let filtered = _.filter(myCollection_1, function (o) { return o.age > 25 });
 console.log(filtered);
-
 
 const check = _.invokeMap([123, 456], 'sort');
 console.log(check);
@@ -47,15 +47,15 @@ const someTest = _.some(users, ['user', 'false'])
 console.log(someTest);*/
 
 
-
 // ---- Function
+
 /*
 _.spread(func, [start=0])
 
 let any = _.spread(function (arg1, arg2, arg3) { console.log('spread func arg.', arg1, arg2, arg3) });
 any (['one', 'two', 'one more'])
 
-_.memoize(func, [resolver])
+//_.memoize(func, [resolver])
 
 let obj1 = { user: "Ivan", age: 20 };
 let obj2 = { user: "Petya", age: 40 };
@@ -68,6 +68,7 @@ console.log(values(obj2));
 */
 
 // ---- Lang
+
 /*
 // _.clone(value)
 
@@ -88,6 +89,7 @@ console.log(_.isEqual(arr, arr2));
 */
 
 // ----- Math
+
 /*
 //_.min(array)
 
@@ -104,6 +106,7 @@ console.log(_.sumBy(arr, function(arg){return arg.a}))
 */
 
 // ---- Object 
+
 /*
 // _.defaults(object, [sources])
 
@@ -121,13 +124,47 @@ let obj2 = {'d': 4, 'e': 5, 'f': 6};
 console.log(_.merge(obj1, obj2));
 */
 
-// --- 
+// --- STRING
 
-
-// --- Seq
-// --- “Date” Methods
 /*
-///?????
-_.defer(function(stamp) {
-  console.log(_.now() - stamp);
-}, _.now());*/
+// _.repeat([string=''], [n=1])
+
+console.log(_.repeat('Hello World! ', 3))
+ 
+// _.replace([string=''], pattern, replacement)
+
+console.log(_.replace('Hello World', 'Hello', 'Hi'))
+
+//_.startCase([string=''])
+
+console.log(_.startCase('hey_hey-hey'));
+*/
+
+// ----- Until Methods
+
+/*
+// _.conforms(source)
+
+let users = [
+  { 'name': 'Peter', 'surname': 'Ivanov' },
+  { 'name': 'Viktor', 'surname': 'Petrov' },
+  { 'name': 'Oleg', 'surname': 'Ivanov' },
+];
+
+console.log(_.filter(users, _.conforms({
+  'surname': function (n) {
+    return n === 'Ivanov'
+  }
+})));
+
+// _.matchesProperty(path, srcValue)
+
+let person = [
+  { 'name': 'Peter', 'surname': 'Ivanov' },
+  { 'name': 'Viktor', 'surname': 'Petrov' },
+  { 'name': 'Oleg', 'surname': 'Ivanov' },
+];
+
+console.log(_.filter(person, _.matchesProperty('name', 'Ivan')))
+
+*/
