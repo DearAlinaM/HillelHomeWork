@@ -54,18 +54,30 @@ _.spread(func, [start=0])
 
 let any = _.spread(function (arg1, arg2, arg3) { console.log('spread func arg.', arg1, arg2, arg3) });
 any (['one', 'two', 'one more'])
-
+*/
 //_.memoize(func, [resolver])
 
-let obj1 = { user: "Ivan", age: 20 };
+
+let obj1 = { user: "Ivan", age: 25 };
 let obj2 = { user: "Petya", age: 40 };
 
-let keys = _.memoize(_.keys);
-console.log(keys(obj1));
+function toMem(n) {
+  console.log('toMem is called');
+  return `${n.user}`;
+}
 
-let values = _.memoize(_.values);
-console.log(values(obj2));
-*/
+let checkFunc = _.memoize(toMem);
+
+console.log(checkFunc(obj1));
+console.log(checkFunc(obj1));
+
+obj1.user = "SomebodyNew";
+
+console.log(checkFunc(obj1));
+console.log(checkFunc(obj2));
+console.log(checkFunc(obj1));
+console.log(obj1);
+
 
 // ---- Lang
 
