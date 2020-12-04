@@ -58,25 +58,33 @@ any (['one', 'two', 'one more'])
 //_.memoize(func, [resolver])
 
 
+function toMult(n) {
+  console.log('from toMult Func');
+  return n * 2;
+}
+
+let mem = _.memoize(toMult);
+
+console.log(mem(4));
+console.log(mem(4));
+console.log(mem(4));
+console.log(mem(3));
+
+
 let obj1 = { user: "Ivan", age: 25 };
 let obj2 = { user: "Petya", age: 40 };
 
-function toMem(n) {
+function toMem(anyObj) {
   console.log('toMem is called');
-  return `${n.user}`;
+  return anyObj;
 }
 
 let checkFunc = _.memoize(toMem);
 
 console.log(checkFunc(obj1));
 console.log(checkFunc(obj1));
-
-obj1.user = "SomebodyNew";
-
-console.log(checkFunc(obj1));
 console.log(checkFunc(obj2));
-console.log(checkFunc(obj1));
-console.log(obj1);
+
 
 
 // ---- Lang
