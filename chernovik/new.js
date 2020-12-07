@@ -8,11 +8,12 @@ cancel -- оставит все без изменений как было ран
 
 P.S. обязательно использовать делегирование события.
 */
-function getButtonsInTD() {
+function getButtonsOnTD() {
 
   let buttons = [
     { item: 'save' },
     { item: 'cancel' },
+    // {item: 'close' }
   ];
 
 
@@ -23,7 +24,7 @@ function getButtonsInTD() {
       let but = document.createElement('button');
       but.innerText = el.item;
       frag.append(but);
-      });
+    });
     return frag;
   }
 
@@ -34,9 +35,7 @@ function getButtonsInTD() {
     let textAreaFrag = document.createDocumentFragment();
     textAreaFrag.append(textArea);
     return textAreaFrag;
-   }
-    
- 
+  }
 
   function doButtonsAdding(e) {
     let target = e.target;
@@ -50,7 +49,24 @@ function getButtonsInTD() {
     if (target.childElementCount === 0) {
       target.append(fragTA);
       target.append(fragButtons);
-      target.addEventListener('click', makeButAction);
+             
+      target.addEventListener('click', function (e1) {
+        if (e1.target.tagName === 'BUTTON') {
+          let textArea = document.querySelector('textarea');
+          // console.log(textArea);
+          if (textArea && e1.target.textContent === 'save') {
+            target.firstChild.textContent = textArea.value;
+            textArea.remove();
+            let buttToRemove = document.querySelector('div');
+            buttToRemove.remove();
+          }
+          else if (textArea && e1.target.textContent === 'cancel') {
+            textArea.remove();
+            let buttonsToRem = document.querySelector('div');
+            buttonsToRem.remove();
+          }
+        }
+      })
     }
   
     else {
@@ -63,27 +79,6 @@ function getButtonsInTD() {
   }
 
 
-  function makeButAction(e1) {
-        // console.log(e1);
-        // console.log(e1.target);
-        if (e1.target.tagName === 'BUTTON') {
-          let textArea = document.querySelector('textarea');
-            if (textArea && e1.target.textContent === 'save') {
-              this.childNodes[0].textContent = textArea.value;
-              textArea.remove();
-              let buttToRemove = document.querySelector('div');
-              buttToRemove.remove();
-              }
-            else {
-            textArea.remove();
-            let buttonsToRem = document.querySelector('div');
-            buttonsToRem.remove();
-          }
-        }
-      }
-    
-    
-    
   function addButtonsToTable() {
     let table = document.querySelector('table');
     table.addEventListener('click', doButtonsAdding);
@@ -94,7 +89,7 @@ function getButtonsInTD() {
 }
 
 
-getButtonsInTD()
+getButtonsOnTD()
 
 
  

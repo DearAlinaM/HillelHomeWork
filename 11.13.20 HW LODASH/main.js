@@ -58,17 +58,17 @@ any (['one', 'two', 'one more'])
 //_.memoize(func, [resolver])
 
 
-function toMult(n) {
-  console.log('from toMult Func');
-  return n * 2;
-}
+// function toMult(n) {
+//   console.log('from toMult Func');
+//   return n * 2;
+// }
 
-let mem = _.memoize(toMult);
+// let mem = _.memoize(toMult);
 
-console.log(mem(4));
-console.log(mem(4));
-console.log(mem(4));
-console.log(mem(3));
+// console.log(mem(4));
+// console.log(mem(4));
+// console.log(mem(4));
+// console.log(mem(3));
 
 
 let obj1 = { user: "Ivan", age: 25 };
@@ -83,8 +83,10 @@ let checkFunc = _.memoize(toMem);
 
 console.log(checkFunc(obj1));
 console.log(checkFunc(obj1));
-console.log(checkFunc(obj2));
+// console.log(checkFunc(obj2));
 
+obj1.user = 'kirill';
+console.log(checkFunc(obj1));
 
 
 // ---- Lang
