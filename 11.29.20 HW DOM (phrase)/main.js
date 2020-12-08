@@ -36,8 +36,7 @@ function getButtonsInTD() {
     return textAreaFrag;
    }
     
- 
-
+  
   function doButtonsAdding(e) {
     let target = e.target;
     if (target.tagName != 'TD') {
@@ -59,9 +58,7 @@ function getButtonsInTD() {
       let taToRemove = document.querySelector('textarea');
       taToRemove.remove();
     }
-
   }
-
 
   function makeButAction(e1) {
         // console.log(e1);
@@ -81,7 +78,6 @@ function getButtonsInTD() {
           }
         }
       }
-    
     
     
   function addButtonsToTable() {
