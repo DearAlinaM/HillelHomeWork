@@ -13,7 +13,6 @@ function createGif(link) {
 let pokemon = 'http://www.youloveit.ru/uploads/posts/2019-04/1556556969_youloveit_ru_gifki_pokemon_detektiv_pikachu08.gif';
 let cat = 'https://sweetytextmessages.com/wp-content/uploads/2018/02/Funny-Cat-Gifs-for-Laugh-2.gif';
 
-
 let toMemGif = _.memoize(createGif);
 
 toMemGif(pokemon);
@@ -21,6 +20,3 @@ toMemGif(pokemon);
 toMemGif(pokemon);
 toMemGif(cat);
 toMemGif(cat);
-
-
-
