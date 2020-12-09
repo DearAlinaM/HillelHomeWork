@@ -7,14 +7,35 @@
 </head>
 <body>
     <style>
-        
+         .counterBox {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 120px;
+            border: 2px solid black;
+            padding: 10px;
+            margin:20px;
+        }
     </style>
-    <div class = 'counterBox'>
+    <section>
+    <div  class = 'counterBox' data-value = 'counter_1'data-class = '1stCont' >
+        counter 1
         <button class = 'counterBox_click' >click </button>
-        <button class = 'counterBox_counter' >counter 0</button>
+        <span class = 'counterBox_counter' data-class = '1stCont' >0</span>
         </div>
-    <button class = 'clear'>clear counter</button>
-    <button class = 'set'>set new value</button>
+    <div  class='counterBox' data-value = 'counter_2' data-class = '2stCont' >
+            counter 2
+            <button class='counterBox_click'>click </button>
+            <span class='counterBox_counter' data-class = '2stCont'>0</span>
+        </div>
+    <div class='counterBox' data-value = 'counter_3' data-class = '3stCont' >
+            counter 3
+            <button class='counterBox_click'>click </button>
+            <span class='counterBox_counter' data-class = '3stCont'>0</span>
+        </div>
+    <button class = 'clear' >clear counter</button>
+    <button class = 'set' >set new value</button>
+    </section>
 </body>
 <script src="./main.js"></script>
 </html>
