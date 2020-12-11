@@ -101,3 +101,38 @@ d();*/
 
 
 
+// var foo = 1; 
+// function bar() { 
+//     console.log(foo);
+//     if (!foo) { 
+//         var foo = 10; 
+//     } 
+//     console.log(foo); 
+// } 
+// bar();
+
+// ---------------------------
+// var a = 1; 
+// function b() { 
+//     a = 10; 
+//     console.log(a);
+//     return; 
+//     function a() { };
+          
+// } 
+// b(); 
+// alert(a);
+
+// ---------------------------
+// var user = {
+//   firstName: "Вася",
+//   sayHi: function() {
+//         alert( this.firstName );
+//   }
+// };
+
+// setTimeout(user.sayHi, 1000);
+
+
+
+

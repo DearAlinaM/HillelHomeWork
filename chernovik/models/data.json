@@ -1,0 +1,6 @@
+[
+    { "name": "appleFROMJSON", "quantity": 2, "origin":"Ukraine" },
+    { "name": "orange", "quantity": 12, "origin": "Turkey" },
+    {"name": "pine-apple", "quantity": 5, "origin": "Somewhere" },
+    {"name": "peach", "quantity": 3, "origin": "Russia"}
+]
