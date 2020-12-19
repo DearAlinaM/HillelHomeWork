@@ -19,6 +19,7 @@ function getButtonsInTD() {
   function makeButtons(list) {
     // let frag = document.createDocumentFragment();
     let frag = document.createElement('div');
+    console.log(list);
     list.forEach(el => {
       let but = document.createElement('button');
       but.innerText = el.item;

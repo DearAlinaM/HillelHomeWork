@@ -42,6 +42,7 @@ for (const item of goods) {
   //----------------Boobles
 
 const div1 = document.querySelector('.first');
+console.log(div1);
 const div2 = document.querySelector('.sec');
 const div3 = document.querySelector('.third');
 

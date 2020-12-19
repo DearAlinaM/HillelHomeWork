@@ -13,6 +13,7 @@
 let secCounterBox = document.querySelectorAll('section');
 secCounterBox.forEach(function (counterBox) {
     let counters = counterBox.childNodes;
+    console.log(counters);
     counters.forEach(function (e) {
         if (e.nodeType === 1) {
             e.addEventListener('click', setChange)
