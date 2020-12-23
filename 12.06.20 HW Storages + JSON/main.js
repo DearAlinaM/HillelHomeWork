@@ -13,8 +13,9 @@
 let secCounterBox = document.querySelectorAll('section');
 secCounterBox.forEach(function (counterBox) {
     let counters = counterBox.childNodes;
-    console.log(counters);
+    // console.log(counters);
     counters.forEach(function (e) {
+        // console.log(e);
         if (e.nodeType === 1) {
             e.addEventListener('click', setChange)
         }
@@ -25,9 +26,11 @@ secCounterBox.forEach(function (counterBox) {
 
 const helperObj = {
     setToLS(key, value) {
+        
         localStorage.setItem(key, JSON.stringify(value));
     },
     getFromLS(key) {
+        console.log(key);
         return JSON.parse(localStorage.getItem(key));
     }
 }
@@ -49,9 +52,11 @@ secCounterBox.forEach(function (counterBox) {
 
 
 function setChange(e) {
-      
+    // console.log(e);
+   
     let allBoxes = document.querySelectorAll('.counterBox');
     let counter = document.querySelectorAll('.counterBox_counter');
+
      if (e.target.classList.contains('counterBox_click')){        
         let classBox = this.dataset.class;
         let keyValue = `${this.dataset.value}`;

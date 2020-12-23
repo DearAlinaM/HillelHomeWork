@@ -1,6 +1,6 @@
 function registrationCheckHW() {
 
-    function ajaxFunk({ method, url, succ, error, postInfo }) {
+    function ajaxFunction({ method, url, succ, error, postInfo }) {
         let xhr = new XMLHttpRequest();
         xhr.addEventListener('load', function () {
             succ.call(xhr, this.response);
@@ -18,19 +18,19 @@ function registrationCheckHW() {
     }
 
 
-    function userCheck(idForm, infoForAjaxPart) {
+    function userCheck(infoForAjaxPart) {
     
         let data = {
-            form: document.querySelector(idForm),
+            form: document.querySelector('#regForm'),
             getData() { // сбор инфы с полей
 
                 let sendData = {};
                     [].forEach.call(this.form, ({ name, value, tagName }) => {
-                        if (tagName != 'INPUT') {
+                        if (tagName !== 'INPUT') {
                             return
                         }
                         sendData[name] = value;
-                    });
+                        });
                 return sendData
             },
             submit() {
@@ -44,7 +44,7 @@ function registrationCheckHW() {
         
             dataToSend(info1, postInfo) {
                 let generalInfo = { ...info1, postInfo }
-                ajaxFunk(generalInfo);
+                // ajaxFunction(generalInfo);
             }
         };
 
@@ -71,8 +71,8 @@ function registrationCheckHW() {
         }
     };
 
-    let myFormId = '#regForm';
-    userCheck(myFormId, xhrObj);
+    // let myFormId = '#regForm';
+    userCheck( xhrObj);
 }
 
 registrationCheckHW()

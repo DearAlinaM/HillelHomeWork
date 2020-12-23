@@ -1,32 +1,32 @@
-console.log(window.localStorage);
+// console.log(window.localStorage);
 
 localStorage.setItem('heyItem1', 'itemValue');
-document.body.innerText = localStorage.getItem('heyItem1');
-localStorage.setItem('heyItem2', 'itemValue2');
+// document.body.innerText = localStorage.getItem('heyItem1');
+// localStorage.setItem('heyItem2', 'itemValue2');
 
-for (let i in localStorage) {
-    // console.log(localStorage[i]);
-    if (localStorage.hasOwnProperty(i)) {
-        console.log(localStorage[i])
-    };
+// for (let i in localStorage) {
+//     // console.log(localStorage[i]);
+//     if (localStorage.hasOwnProperty(i)) {
+//         console.log(localStorage[i])
+//     };
     
-    // localStorage.hasOwnProperty(i);
-}
-
-// let obj = {
-//     a: 2,
-//     b: 12,
-//     c : ['av', 'd', 'v']
+//     // localStorage.hasOwnProperty(i);
 // }
 
-// let newJ = JSON.stringify(obj);
-// console.log(newJ);
+// // let obj = {
+// //     a: 2,
+// //     b: 12,
+// //     c : ['av', 'd', 'v']
+// // }
 
-// localStorage.setItem('myObj', JSON.stringify(obj));
+// // let newJ = JSON.stringify(obj);
+// // console.log(newJ);
 
-let JSON_FROM_LS = localStorage.getItem('myObj');
-console.log(JSON_FROM_LS)
-document.body.innerText = localStorage.getItem('myObj');
+// // localStorage.setItem('myObj', JSON.stringify(obj));
 
-let deSer = JSON.parse(localStorage.getItem('myObj'));
-console.log(deSer);
+// let JSON_FROM_LS = localStorage.getItem('myObj');
+// console.log(JSON_FROM_LS)
+// document.body.innerText = localStorage.getItem('myObj');
+
+// let deSer = JSON.parse(localStorage.getItem('myObj'));
+// console.log(deSer);
