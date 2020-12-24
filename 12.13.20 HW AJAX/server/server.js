@@ -25,27 +25,15 @@ app.listen(port, function () {
 
 app.post('/users', function (req, res) {
   let body = req.body;
-  // console.log(body);
   let { login = null, password = null } = JSON.parse(body);
   fs.readFile('users.json', 'utf-8', function ( err, dataToRead ) {
-    
-    let check = userCheck(dataToRead, { login, password}) ;
-    if (check != false) {
-      let { id } = check[0];
-       
-       res.send(JSON.stringify(id));
-     
-     
+    let check = userCheck(dataToRead, { login, password });
+    if (check.length === 1) {
+        let { id } = check[0];
+        res.send(JSON.stringify(id));
+    }   else {
+        res.status(404).send("Unautorized");
     }
-    else {
-  res.sendStatus(401, 'Unauthorized');
-    
-      // let goodsWay = `./goods/${check[0].id}.json`;
-      // fs.readFile(goodsWay, 'utf-8', function (err, goods) {
-      //   res.send(goods);
-      // })
-    }
-    
   })
 });
 
@@ -55,9 +43,15 @@ function userCheck(UserDataCheck, additionalInfo) {
       if (user.login === login && user.password === password) {
         return user
     }
-    
-    
   });
- 
   return filteredData
 }
+
+app.post('/users/goods', function (req, res) {
+  if (req.body) {
+    let goodsWay = `./goods/${JSON.parse(req.body)}.json`;
+    fs.readFile(goodsWay, 'utf-8', function (err, goods) {
+      res.send(goods);
+    })
+  }
+})

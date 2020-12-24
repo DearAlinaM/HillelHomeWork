@@ -1,21 +1,13 @@
-
-
 class RegData {
-    constructor(name, id, infoAjax) {
-        this.name = name,
+    constructor( id) {
         this.id = id;
         this.form = document.querySelector(this.id);
-        this.ajaxObj = infoAjax;
-
     };
-    dataToSend(info1, loginPass) { /// отправка инфы на сервер
-        let generalInfo = { ...info1,  loginPass}
+
+    submit(info1) { //  1) оправка  логин/пароля и ajax объекта в функцию ajax;
+        let loginPass = this.getData();
+        let generalInfo = { ...info1, loginPass };
         this.ajaxFunction(generalInfo);
-    };
-
-    submit() { // клик на кнопку 
-        let { login, password } = this.getData();
-        this.dataToSend( this.ajaxObj, { login, password }); 
     };
 
     getData() { // сбор инфы с полей
@@ -33,7 +25,6 @@ class RegData {
         let xhr = new XMLHttpRequest();
         xhr.addEventListener('load', function () {
             succ.call(xhr, this.response);
-            // console.log(this.response);
         });
         xhr.addEventListener('error', function () {
             console.log(error);
@@ -54,36 +45,45 @@ function createAnswer(respondFromServer) {
     if (boxToDel) {
         boxToDel.remove();
     };
-
         let box = document.createElement('div');
         box.innerText = respondFromServer;
-     box.classList.add('answer');
-     
-     document.body.append(box);
-    
-        }
+        box.classList.add('answer');
+        document.body.append(box);
+}
 
-   let xhrObj = {
+let xhrObj = {
         method: 'POST',
         url: 'http://localhost:1234/users',
         succ(responce) {
-            createAnswer(responce);
+           if (responce === 'Unauthorized') {
+               createAnswer(responce);
+           }
+           else {
+               RegData.prototype.ajaxFunction({
+                   method: 'POST',
+                   url: `http://localhost:1234/users/goods`,
+                   succ(responceFromGet) {
+                       createAnswer(responceFromGet)
+                   },
+                   error(err) {
+                       createAnswer(err);
+                   },
+                   loginPass: responce,
+               });
+            }
         },
         error(err) {
             createAnswer(err);
         }
-    };
+};
     
 
-let newData = new RegData('newData', '#regForm', xhrObj);
+let newData = new RegData('#regForm');
 let subBut = newData.form;
 
 subBut.addEventListener('submit',
     (e) => {
-        newData.submit();
+        newData.submit(xhrObj);
         e.preventDefault();
     }
 );
-
-
-

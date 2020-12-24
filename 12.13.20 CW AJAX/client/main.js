@@ -28,33 +28,34 @@
 
 */
 
-// function ajax({ method, url, success, error }) {
-//     const xhr = new XMLHttpRequest();
-//     xhr.addEventListener('load', () => { success.call(xhr, xhr.response) });
-// 
-//     xhr.addEventListener('error', error.bind(xhr, xhr.response));
-//     xhr.open(method, url) // настройка метода, (метод (ГЕТ/ПОСТ) и куда)
-//     xhr.send();
-//     // console.log({ method, url, success, error });
-// }
+function ajax({ method, url, success, error }) {
+    const xhr = new XMLHttpRequest();
+    console.log(this);
+    // xhr.addEventListener('load', () => { success.call(xhr, xhr.response) });
+
+    // xhr.addEventListener('error', error.bind(xhr, xhr.response));
+    // xhr.open(method, url) // настройка метода, (метод (ГЕТ/ПОСТ) и куда)
+    // xhr.send();
+    // console.log({ method, url, success, error });
+}
 
 
-// let obj  = {
-//     method: 'GET',
-//     url: 'http://localhost:1234/',
-//     // get-user-info?maxQuantity=8&minQuantity=2',
-//     success: function (respond) {
-//         // console.log(respond);       
-//          let data = JSON.parse(respond);
-//          console.log(data);
+let obj  = {
+    method: 'GET',
+    url: 'http://localhost:1234/',
+    // get-user-info?maxQuantity=8&minQuantity=2',
+    success: function (respond) {
+        // console.log(respond);       
+         let data = JSON.parse(respond);
+         console.log(data);
         
-//     },
-//     error: function (error) {
-//         console.log(error)
-//     },
-// }
+    },
+    error: function (error) {
+        console.log(error)
+    },
+}
 
-
+ajax(obj);
 /*
 REPEAT
  ajaxObj = {
@@ -72,7 +73,7 @@ REPEAT
 //   ajax(obj);
 // });
 //-==================================================================
-
+/*
 function ajax({ method, url, payload, success, error }) {
     console.log(payload);
     const xhr = new XMLHttpRequest();
@@ -156,3 +157,4 @@ regForm('form')
            
 //========================
 
+*/
