@@ -92,5 +92,5 @@ subBut.addEventListener('submit',
     e.preventDefault();
         let logPassInfo = newData.getData();
         newData.button(logPassInfo);
-}
+    }
 );
