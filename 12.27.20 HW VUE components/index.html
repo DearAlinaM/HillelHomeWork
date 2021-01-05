@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>27.12.20 VUE continue</title>
+</head>
+<body>
+        <style>
+            body {
+                background-color: rgb(102, 162, 180);
+                color: white
+            }
+            .compNameParentClass{
+                border: 1px solid white;
+                display: flex;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+
+            }
+            .ranges{
+                display: flex;
+            }
+            button{
+                padding: 5px;
+                width: 80px;
+            }
+            .childFrame{
+                border: 1px solid blue;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 70px;
+                margin: 10px;
+            }
+            .childRange{
+                width: 50px;
+            }
+            .child{
+                width: 20px;
+                height: 20px;
+                background-color: rgb(182, 252, 69);
+            }
+           
+        </style>
+
+        
+       <section id ='vueSec'>
+
+        <comp-Name-Parent>
+        </comp-Name-Parent>
+
+       </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="./vue.js"></script>
+</html>
