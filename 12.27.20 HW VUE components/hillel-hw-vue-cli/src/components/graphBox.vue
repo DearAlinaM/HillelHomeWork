@@ -1,6 +1,5 @@
 <template>
   <div class="graphBoxCl">
-    {{ getFromLS() }}
     <diagramma v-bind:style="backGrStyles" :diagrHeight="rangeValueToDiagr" />
     <rangeInput @rangeValueFromInput="fromRangeInput" />
   </div>
@@ -38,6 +37,9 @@ export default {
       this.toLS(valueFromLS);
       this.$set(this.rangeValueToDiagr, 'height', `${valueFromLS}px`);
     },
+  },
+  beforeMount() {
+    this.getFromLS();
   },
 };
 </script>
