@@ -1,14 +1,16 @@
 <template>
   <div class="graphBoxCl">
     <diagramma v-bind:style="backGrStyles" :diagrHeight="rangeValueToDiagr" />
-    <rangeInput @rangeValueFromInput="fromRangeInput" />
+    <rangeInput
+      @rangeValueFromInput="fromRangeInput"
+      :newValueFromLS="vaueToInpFromLS"
+    />
   </div>
 </template>
 
 <script>
 import diagramma from './diagramma';
 import rangeInput from './rangeInput';
-
 export default {
   name: 'graphBox',
   components: {
@@ -20,6 +22,7 @@ export default {
     return {
       rangeValueToDiagr: { height: '' },
       keyForLS: '',
+      vaueToInpFromLS: '',
     };
   },
   methods: {
@@ -36,6 +39,7 @@ export default {
       let valueFromLS = localStorage.getItem(key);
       this.toLS(valueFromLS);
       this.$set(this.rangeValueToDiagr, 'height', `${valueFromLS}px`);
+      this.$set(this, 'vaueToInpFromLS', +valueFromLS);
     },
   },
   beforeMount() {

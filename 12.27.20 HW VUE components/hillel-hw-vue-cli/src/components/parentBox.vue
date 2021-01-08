@@ -6,7 +6,7 @@
         <graphBox :backGrStyles="item.styles" :boxNameForLS="item.boxName" />
       </li>
     </ul>
-    <filterBut />
+    <filterBut :key1="items" />
   </div>
 </template>
 

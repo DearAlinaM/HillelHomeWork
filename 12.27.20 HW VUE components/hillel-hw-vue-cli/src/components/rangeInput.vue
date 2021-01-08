@@ -8,20 +8,28 @@
 <script>
 export default {
   name: 'rangeInput',
+  props: { newValueFromLS: Number },
   data: () => {
     return {
       rangeValue: '0',
+      // newValueFromLS: '',
     };
   },
   methods: {
     emitValueToParent(v) {
       this.$emit('rangeValueFromInput', v);
     },
+    getFromLSInp() {
+      this.rangeValue = this.newValueFromLS;
+    },
   },
   watch: {
     rangeValue() {
       this.emitValueToParent(this.rangeValue);
     },
+  },
+  beforeMount() {
+    this.getFromLSInp();
   },
 };
 </script>
