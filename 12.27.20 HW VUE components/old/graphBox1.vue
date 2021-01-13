@@ -1,9 +1,10 @@
 <template>
   <div class="graphBoxCl">
     <diagramma v-bind:style="backGrStyles" :diagrHeight="rangeValueToDiagr" />
+    {{ rangeValueToDiagr.height }}
     <rangeInput
-      @rangeValueFromInput="fromRangeInput"
-      :newValueFromLS="vaueToInpFromLS"
+      @rangeValueToParentEmitted="rangeValueToParent"
+      :inpHeight="heightPI"
     />
   </div>
 </template>
@@ -17,33 +18,37 @@ export default {
     diagramma,
     rangeInput,
   },
-  props: { backGrStyles: Object, boxNameForLS: String },
+  // props: {
+  //   backGrStyles: Object,
+  //   boxNameForLS: String,
+  //   heightP: Number,
+  //   // heightP: String,
+  // },
+  props: ['backGrStyles', 'boxNameForLS', 'heightP'],
   data: () => {
     return {
       rangeValueToDiagr: { height: '' },
-      keyForLS: '',
-      vaueToInpFromLS: '',
+      heightPI: '',
     };
   },
   methods: {
-    fromRangeInput(valueFromInp) {
-      this.toLS(valueFromInp);
-      this.$set(this.rangeValueToDiagr, 'height', `${valueFromInp}px`);
+    setHeightToDiagr() {
+      this.$set(this.rangeValueToDiagr, 'height', `${this.heightP}px`);
+      console.log('diagr');
     },
-    toLS(valueToLs) {
-      let key = this.boxNameForLS;
-      localStorage.setItem(key, valueToLs);
+
+    setHeightToInp() {
+      this.$set(this.heightPI, this.heightP);
+      console.log('inp');
     },
-    getFromLS() {
-      let key = this.boxNameForLS;
-      let valueFromLS = localStorage.getItem(key);
-      this.toLS(valueFromLS);
-      this.$set(this.rangeValueToDiagr, 'height', `${valueFromLS}px`);
-      this.$set(this, 'vaueToInpFromLS', +valueFromLS);
+    rangeValueToParent(v) {
+      // this.$set(this.rangeValueToDiagr, 'height', `${v}px`);
+      // console.log(this, v);
+      this.$emit('newInpValue', v);
     },
   },
   beforeMount() {
-    this.getFromLS();
+    this.setHeightToDiagr();
   },
 };
 </script>

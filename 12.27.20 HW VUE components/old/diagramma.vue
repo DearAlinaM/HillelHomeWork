@@ -1,16 +1,11 @@
 <template>
-  <div class="diagrammaCl" v-bind:style="heightD"></div>
+  <div class="diagrammaCl" v-bind:style="diagrHeight"></div>
 </template>
 
 <script>
 export default {
   name: 'diagramma',
-  props: { diagrH: Object },
-  data() {
-    return {
-      heightD: this.diagrH,
-    };
-  },
+  props: ['diagrHeight'],
 };
 </script>
 

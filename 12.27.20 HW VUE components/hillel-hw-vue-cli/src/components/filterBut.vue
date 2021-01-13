@@ -5,30 +5,33 @@
 <script>
 export default {
   name: 'filterBut',
-  props: { key1: Array },
-  data() {
-    return {};
-  },
+  props: ['itemsObj'],
   methods: {
     getInfotoFilter() {
-      console.log(this.key1, 'getInfotoFilter');
-      // this.getkey(this.key1, 'boxName');
-    },
-    getkey(arrA, keyName) {
-      console.log(arrA.length, keyName);
-      let keys = [];
-      for (let i = 0; i < arrA.length; i++) {
-        keys.push(arrA[i][keyName]);
+      let arr = [];
+      for (let i = 0; i < this.itemsObj.length; i++) {
+        arr.push(this.itemsObj[i].height);
       }
-      console.log(keys);
-      this.getFromLS(keys);
+      this.toSortFromBiggest(arr);
     },
-    getFromLS(keysLS) {
-      let arLS = [];
-      for (let i = 0; i < keysLS.length; i++) {
-        arLS.push(localStorage.getItem(keysLS.i));
+    toSortFromBiggest(startArray, finalArray = []) {
+      if (startArray.length === 0) {
+        return;
       }
-      console.log(arLS);
+
+      let j = startArray.length;
+      let max = startArray[0];
+      let maxI;
+      for (let i = 0; i < j; i++) {
+        if (startArray[i] > max) {
+          max = startArray[i];
+          maxI = i;
+        }
+      }
+      startArray.splice(maxI, 1);
+      finalArray.push(max);
+      this.toSortFromBiggest(startArray, finalArray);
+      this.$emit('sortedBiggest', finalArray);
     },
   },
 };

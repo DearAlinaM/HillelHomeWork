@@ -2,16 +2,19 @@
   <div class="generalParentBox">
     <ul class="parentBoxCl">
       <li v-for="(item, ind) in items" :key="ind">
-        {{ item.boxName }}
+        {{ item.boxName }} <br />
+        H: {{ item.height }} <br />
+        ind: {{ ind }}
+
         <graphBox1
-          :backGrColor="item.styles"
-          :heightFrPar="item.height"
-          :indCheck="item.uniqueId"
-          @emRangeBox="setNewH"
+          :backGrStyles="item.styles"
+          :boxNameForLS="item.boxName"
+          :heightP="item.height"
+          @newInpValue="setNewinpValue"
         />
       </li>
     </ul>
-    <filterBut :itemsObj="this.items" @sortedBiggest="toAddSortedHeight" />
+    <filterBut :key1="items" />
   </div>
 </template>
 
@@ -30,64 +33,56 @@ export default {
     return {
       items: [
         {
-          styles: 'red',
+          styles: { backgroundColor: 'red' },
           boxName: 'Box_1',
           height: 10,
           uniqueId: 0,
         },
         {
-          styles: 'green',
+          styles: { backgroundColor: 'green' },
           boxName: 'Box_2',
-          height: 20,
+          height: 10,
           uniqueId: 1,
         },
         {
-          styles: 'blue',
+          styles: { backgroundColor: 'blue' },
           boxName: 'Box_3',
           height: 10,
           uniqueId: 2,
         },
         {
-          styles: 'yellow',
+          styles: { backgroundColor: 'yellow' },
           boxName: 'Box_4',
-          height: 50,
+          height: 10,
           uniqueId: 3,
         },
         {
-          styles: 'black',
+          styles: { backgroundColor: 'black' },
           boxName: 'Box_5',
           height: 15,
           uniqueId: 4,
         },
         {
-          styles: 'orange',
+          styles: { backgroundColor: 'orange' },
           boxName: 'Box_6',
           height: 10,
           uniqueId: 5,
         },
         {
-          styles: 'grey',
+          styles: { backgroundColor: 'grey' },
           boxName: 'Box_7',
           height: 10,
           uniqueId: 6,
         },
       ],
-      toSortFromBiggestArray: [],
     };
   },
   methods: {
-    setNewH({ hVal, indVal }) {
-      this.$set(this.items[indVal], 'height', hVal);
-      this.toLS(this.items[indVal].uniqueId, JSON.stringify(hVal));
-    },
-    toLS(keyLS, valueLS) {
-      localStorage.setItem(keyLS, valueLS);
-    },
-    toAddSortedHeight(sortedArray) {
-      for (let i = 0; i < sortedArray.length; i++) {
-        this.items[i].height = sortedArray[i];
-        this.toLS(i, JSON.stringify(sortedArray[i]));
-      }
+    setNewinpValue(a) {
+      console.log(a);
+      this.$set(this.items, '1', { height: `${a}` });
+      // this.items['height'] = `${a}px`;
+      // console.log(a, this.items, 'from Parent');
     },
   },
 };

@@ -1,35 +1,44 @@
 <template>
   <div>
-    <input class="rangeInputCl" type="range" v-model.number="rangeValue" />
-    {{ rangeValue }}
+    <input class="rangeInputCl" type="range" v-model.Number="rangeR" />
+    {{ this.inpHeightH }}
   </div>
 </template>
 
 <script>
 export default {
   name: 'rangeInput',
-  props: { newValueFromLS: Number },
-  data: () => {
+  props: { inpHeightH: Number, indexH: Number },
+  data() {
     return {
-      rangeValue: '0',
-      // newValueFromLS: '',
+      rangeValueDefault: this.inpHeightH,
+      rangeR: '',
+      indD: this.indexH,
     };
   },
   methods: {
-    emitValueToParent(v) {
-      this.$emit('rangeValueFromInput', v);
-    },
-    getFromLSInp() {
-      this.rangeValue = this.newValueFromLS;
+    emitValueToPar(val, defaultV, index) {
+      if (!val) {
+        val = defaultV;
+      }
+      let valueObj = { hVal: +val, indVal: index };
+      // console.log(valueObj, index);
+      this.$emit('emRange', valueObj);
     },
   },
   watch: {
-    rangeValue() {
-      this.emitValueToParent(this.rangeValue);
+    rangeR() {
+      this.emitValueToPar(this.rangeR, this.rangeValueDefault, this.indD);
     },
   },
-  beforeMount() {
-    this.getFromLSInp();
+
+  mounted() {
+    let LScheck = localStorage.getItem(this.indD);
+    if (LScheck) {
+      this.rangeR = LScheck;
+    } else {
+      this.rangeR = this.rangeValueDefault;
+    }
   },
 };
 </script>
