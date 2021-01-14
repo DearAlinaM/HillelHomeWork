@@ -11,7 +11,7 @@
         />
       </li>
     </ul>
-    <filterBut :itemsObj="this.items" @sortedBiggest="toAddSortedHeight" />
+    <filterBut :itemsObj="this.items" @sortedInfo="catchSortedInfo" />
   </div>
 </template>
 
@@ -72,7 +72,7 @@ export default {
           uniqueId: 6,
         },
       ],
-      toSortFromBiggestArray: [],
+      toSortedFromBiggestArray: [],
     };
   },
   methods: {
@@ -83,9 +83,13 @@ export default {
     toLS(keyLS, valueLS) {
       localStorage.setItem(keyLS, valueLS);
     },
+    catchSortedInfo({ height, indexes }) {
+      console.log(height, indexes, 'from Parent');
+      this.toAddSortedHeight(height);
+    },
     toAddSortedHeight(sortedArray) {
       for (let i = 0; i < sortedArray.length; i++) {
-        this.items[i].height = sortedArray[i];
+        this.$set(this.items[i], 'height', sortedArray[i]);
         this.toLS(i, JSON.stringify(sortedArray[i]));
       }
     },

@@ -25,7 +25,15 @@ export default {
       let cashStartA = [];
       arr.map((i) => cashStartA.push(i));
       this.startA = cashStartA;
-      this.toSortFromBiggest(arr);
+
+      let sortedBigSmallArray = this.toSortFromBiggest(arr);
+      let sortedIndexBigSmallArray = this.indexCheck();
+
+      let sortedHeightAndIndex = {
+        height: sortedBigSmallArray,
+        indexes: sortedIndexBigSmallArray,
+      };
+      this.emitToParentIndexSortedArray(sortedHeightAndIndex);
     },
     toSortFromBiggest(startArray, finalArray = [], indexArray = []) {
       if (startArray.length === 0) {
@@ -50,7 +58,7 @@ export default {
       let cashFinalA = [];
       finalArray.map((i) => cashFinalA.push(i));
       this.finalA = cashFinalA;
-      this.$emit('sortedBiggest', finalArray);
+      return finalArray;
     },
 
     indexCheck() {
@@ -66,7 +74,10 @@ export default {
           }
         });
       });
-      console.log(indexArrayCheck);
+      return indexArrayCheck;
+    },
+    emitToParentIndexSortedArray(objToEmit) {
+      this.$emit('sortedInfo', objToEmit);
     },
   },
 };
