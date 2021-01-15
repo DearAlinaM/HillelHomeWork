@@ -3,12 +3,7 @@
     <ul class="parentBoxCl">
       <li v-for="(item, ind) in items" :key="ind">
         {{ item.boxName }}
-        <graphBox1
-          :backGrColor="item.styles"
-          :heightFrPar="item.height"
-          :indCheck="item.uniqueId"
-          @emRangeBox="setNewH"
-        />
+        <graphBox1 :unItem="item" @emRangeBox="setNewH" />
       </li>
     </ul>
     <filterBut :itemsObj="this.items" @sortedInfo="catchSortedInfo" />
@@ -31,49 +26,54 @@ export default {
       items: [
         {
           styles: 'red',
-          boxName: 'Box_1',
+          boxName: 'Box_0',
           height: 10,
           uniqueId: 0,
         },
         {
           styles: 'green',
-          boxName: 'Box_2',
+          boxName: 'Box_1',
           height: 20,
           uniqueId: 1,
         },
         {
           styles: 'blue',
-          boxName: 'Box_3',
+          boxName: 'Box_2',
           height: 10,
           uniqueId: 2,
         },
         {
           styles: 'yellow',
-          boxName: 'Box_4',
+          boxName: 'Box_3',
           height: 50,
           uniqueId: 3,
         },
         {
           styles: 'black',
-          boxName: 'Box_5',
+          boxName: 'Box_4',
           height: 15,
           uniqueId: 4,
         },
         {
           styles: 'orange',
-          boxName: 'Box_6',
+          boxName: 'Box_5',
           height: 10,
           uniqueId: 5,
         },
         {
           styles: 'grey',
-          boxName: 'Box_7',
+          boxName: 'Box_6',
           height: 10,
           uniqueId: 6,
         },
       ],
-      toSortedFromBiggestArray: [],
+      // toSortedFromBiggestArray: [],
     };
+  },
+  computed: {
+    newColor: function(i) {
+      return this.items[i].styles;
+    },
   },
   methods: {
     setNewH({ hVal, indVal }) {
@@ -84,14 +84,23 @@ export default {
       localStorage.setItem(keyLS, valueLS);
     },
     catchSortedInfo({ height, indexes }) {
-      console.log(height, indexes, 'from Parent');
       this.toAddSortedHeight(height);
-    },
-    toAddSortedHeight(sortedArray) {
-      for (let i = 0; i < sortedArray.length; i++) {
-        this.$set(this.items[i], 'height', sortedArray[i]);
-        this.toLS(i, JSON.stringify(sortedArray[i]));
+      this.setStyles(indexes);
+
+      for (let i = 0; i < indexes.length; i++) {
+        this.items[i].styles = 'brown';
+        console.log(this.items[i].styles);
       }
+    },
+
+    toAddSortedHeight(sortedArrayHeight) {
+      for (let i = 0; i < sortedArrayHeight.length; i++) {
+        this.$set(this.items[i], 'height', sortedArrayHeight[i]);
+        this.toLS(i, JSON.stringify(sortedArrayHeight[i]));
+      }
+    },
+    setStyles(oldIndex) {
+      console.log(oldIndex, 'oldIndex');
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div class="graphBoxCl">
     <diagramma :diagrH="hFromDBox" />
-    {{ heightFrPar }}
+    {{ this.unItem.height }} {{ this.unItem.styles }}
     <rangeInput
       :inpHeightH="inpHeight"
       :indexH="indCheckX"
@@ -20,24 +20,22 @@ export default {
     rangeInput,
   },
   props: {
-    backGrColor: String,
-    heightFrPar: Number,
-    indCheck: Number,
+    unItem: Object,
   },
 
   data() {
     return {
       hFromDBox: {
-        height: `${this.heightFrPar}px`,
-        backgroundColor: `${this.backGrColor}`,
+        height: `${this.unItem.height}px`,
+        backgroundColor: `${this.unItem.styles}`,
       },
-      inpHeight: this.heightFrPar,
-      indCheckX: this.indCheck,
+      inpHeight: this.unItem.height,
+      indCheckX: this.unItem.uniqueId,
     };
   },
   computed: {
     newH: function() {
-      return this.heightFrPar;
+      return this.unItem.height;
     },
   },
   methods: {

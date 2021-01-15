@@ -51,7 +51,6 @@ export default {
       }
 
       startArray.splice(maxI, 1);
-
       finalArray.push(max);
       this.toSortFromBiggest(startArray, finalArray, indexArray);
 
@@ -64,8 +63,8 @@ export default {
     indexCheck() {
       let startArrayCheck = this.startA;
       let finalArrayCheck = this.finalA;
-
       let indexArrayCheck = [];
+
       finalArrayCheck.map((i) => {
         startArrayCheck.map((startItem, index) => {
           if (startItem === i) {

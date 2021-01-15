@@ -1,5 +1,7 @@
 <template>
-  <div class="diagrammaCl" v-bind:style="heightD"></div>
+  <div class="diagrammaCl" v-bind:style="heightD">
+    {{ heightD['backgroundColor'] }}
+  </div>
 </template>
 
 <script>
