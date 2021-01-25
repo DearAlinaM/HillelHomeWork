@@ -67,6 +67,7 @@ export default {
           uniqueId: 6,
         },
       ],
+      cashArray: [],
       // toSortedFromBiggestArray: [],
     };
   },
@@ -85,12 +86,7 @@ export default {
     },
     catchSortedInfo({ height, indexes }) {
       this.toAddSortedHeight(height);
-      this.setStyles(indexes);
-
-      for (let i = 0; i < indexes.length; i++) {
-        this.items[i].styles = 'brown';
-        console.log(this.items[i].styles);
-      }
+      this.getNewStyles(indexes);
     },
 
     toAddSortedHeight(sortedArrayHeight) {
@@ -99,10 +95,29 @@ export default {
         this.toLS(i, JSON.stringify(sortedArrayHeight[i]));
       }
     },
-    setStyles(oldIndex) {
-      console.log(oldIndex, 'oldIndex');
+    getNewStyles(oldIndex) {
+      console.log(
+        oldIndex,
+        'массив кому какие цвета по СТАРОМУ массиву = cashItems'
+      );
+      let colors = [];
+      for (let i = 0; i < oldIndex.length; i++) {
+        colors.push(this.items[oldIndex[i]].styles);
+      }
+      // console.log(colors);
+
+      let cash = colors.slice();
+
+      for (let ii = 0; ii < cash.length; ii++) {
+        // this.items[ii].styles = cash[oldIndex[ii]];
+
+        console.log(oldIndex[ii], this.items[oldIndex[ii]].boxName, cash[ii]);
+
+        this.items[ii].styles = 'brown';
+      }
     },
   },
+  created() {},
 };
 </script>
 

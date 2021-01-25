@@ -65,4 +65,25 @@ keys.push(arrA[i][keyName])
     console.log(keys);
 }
 
-getkey(items,'boxName');
+getkey(items, 'boxName');
+
+
+
+/*
+let obj = [
+  { a: 2, b: 20 },
+  { a: 3, b: 30 },
+  { a:4, b: 40 },
+  {a: 5, b: 50},
+]
+
+
+let test = obj.reduce(
+  (acc , cur) => {
+    // acc += (cur.a * cur.b);
+    acc *= cur.a + cur.b;
+    console.log(acc);
+    return acc
+  }, 1
+)
+console.log(test)*/

@@ -22,8 +22,8 @@ export default {
       for (let i = 0; i < this.itemsObj.length; i++) {
         arr.push(this.itemsObj[i].height);
       }
-      let cashStartA = [];
-      arr.map((i) => cashStartA.push(i));
+
+      let cashStartA = arr.slice();
       this.startA = cashStartA;
 
       let sortedBigSmallArray = this.toSortFromBiggest(arr);
@@ -34,6 +34,7 @@ export default {
         indexes: sortedIndexBigSmallArray,
       };
       this.emitToParentIndexSortedArray(sortedHeightAndIndex);
+      this.changeColor();
     },
     toSortFromBiggest(startArray, finalArray = [], indexArray = []) {
       if (startArray.length === 0) {
@@ -54,8 +55,8 @@ export default {
       finalArray.push(max);
       this.toSortFromBiggest(startArray, finalArray, indexArray);
 
-      let cashFinalA = [];
-      finalArray.map((i) => cashFinalA.push(i));
+      let cashFinalA = finalArray.slice();
+
       this.finalA = cashFinalA;
       return finalArray;
     },
@@ -77,6 +78,9 @@ export default {
     },
     emitToParentIndexSortedArray(objToEmit) {
       this.$emit('sortedInfo', objToEmit);
+    },
+    changeColor() {
+      // console.log('change');
     },
   },
 };

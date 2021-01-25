@@ -100,41 +100,32 @@ const farmAccountLog = [
   }
 ];
 
-// var newFarm = farmAccountLog.reduce( 
-//     function (acc, now) {
-//         let nowTest = now.family;
-//         let obj = {[nowTest]: 1};
-//         // console.log(obj, 'now.family');
 
-//     let sum = {};
-    
-    
-//         // let test = Object.assign(obj, acc);
-//         // return test
-
-//     }
-//     , 0
-// )
-
-// console.log(newFarm);
-
-
-let obj = [
-  { a: 'one', b: 11 },
-  { a: 'two', b: 22 },
-  { a: 'one', b: 33 },
-  {a: 'three', b: 33},
-]
-
-
-let test = obj.reduce(
-  function (acc, cur) {
-    console.log(cur);
-    console.log(acc);
-    return Object.assign(acc, cur)
-    // if (cur.a === acc.a) {
-    //   console.log(cur.a);
-    // }
-  }, {}
+var newFarm = farmAccountLog.reduce( 
+ (acc , now) => {
+    let key = now.family;
+    acc[key] ?  acc[key] += 1 : acc[key] = 1;
+    return acc
+    }
+    , {}
 )
+
+console.log(newFarm);
+
+
+/* ARRAY SLICE */
+
+let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+function toSlice(arr, a, b) {
+  b = b - 1 || arr.length - 1;
+  let arrToReturn = [];
+  for (let i = a; i < b + 1; i++){
+    arrToReturn.push(arr[i])
+  }
+  return arrToReturn
+}
+
+let test = toSlice(animals, 1, 5);
 console.log(test)
+

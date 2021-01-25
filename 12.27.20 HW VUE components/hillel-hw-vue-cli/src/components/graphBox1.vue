@@ -1,7 +1,7 @@
 <template>
   <div class="graphBoxCl">
     <diagramma :diagrH="hFromDBox" />
-    {{ this.unItem.height }} {{ this.unItem.styles }}
+    {{ this.unItem.height }} GB1: {{ this.unItem.styles }}
     <rangeInput
       :inpHeightH="inpHeight"
       :indexH="indCheckX"
