@@ -115,17 +115,19 @@ console.log(newFarm);
 
 /* ARRAY SLICE */
 
-let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+let animals = ['ant', 'bison', 'camel', 'duck', 'elephant', 'cat'];
+
 
 function toSlice(arr, a, b) {
-  b = b - 1 || arr.length - 1;
+  let c = b || arr.length;
+  b < 0 ? c = arr.length + b : c;
   let arrToReturn = [];
-  for (let i = a; i < b + 1; i++){
-    arrToReturn.push(arr[i])
+  for (let i = a, j = 0; i < c , j < c - 1 ; i++, j++){
+    arrToReturn[j] = arr[i];
   }
   return arrToReturn
 }
 
-let test = toSlice(animals, 1, 5);
+let test = toSlice(animals, 1);
 console.log(test)
 
